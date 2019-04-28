@@ -143,8 +143,8 @@ class MySprite(pygame.sprite.Sprite):
             self.rect.right = 800
         if self.rect.top <= 0:
             self.rect.top = 0
-        elif self.rect.bottom >= 600:
-            self.rect.bottom = 600
+        elif self.rect.bottom >= 570:
+            self.rect.bottom = 570
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
@@ -167,7 +167,7 @@ class Cloud(pygame.sprite.Sprite):
         self.image = pygame.image.load('cloud.png').convert()
         self.image.set_colorkey((0, 0, 0), RLEACCEL)
         self.rect = self.image.get_rect(center=(
-            random.randint(820, 900), random.randint(0, 200))
+            random.randint(820, 900), random.randint(0, 0))
         )
 
     def update(self):
@@ -179,7 +179,7 @@ class Background(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         
-        self.image = pygame.image.load("magic-cliffs.png").convert_alpha()
+        self.image = pygame.image.load("Background.png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.left = 0
         self.speedx = 10
@@ -194,7 +194,7 @@ class Background1(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         
-        self.image = pygame.image.load("magic-cliffs.png").convert_alpha()
+        self.image = pygame.image.load("Background.png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.left = 0
         self.speedx = 10
@@ -227,16 +227,18 @@ ADDCLOUD = pygame.USEREVENT + 3
 pygame.time.set_timer(ADDCLOUD, 1000)
 
 all_sprites = Group()
-layer = [Background(), Background1()]
-all_sprites.add(layer[0], layer[1])
+
 
 bullets = Group()
 clouds = Group()
+layer = [Background(), Background1()]
+all_sprites.add(layer[0], layer[1])
 my_sprite = MySprite()
 all_sprites.add(my_sprite)
 all_sprites.add(bullets)
 all_sprites.add(clouds)
 enemies = Group()
+
 
 clock = pygame.time.Clock()
 running = True
