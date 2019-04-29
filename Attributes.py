@@ -1,5 +1,5 @@
 Attributes = {
-"width": 800,
+"width": 928,
 "height": 600,
 "fps": 60
 }
